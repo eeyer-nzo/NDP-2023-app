@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var showButton = true
     @State private var textEntered = ""
     @State private var questionIndex = 0
+    @State private var correctAns = false
     var body: some View {
         VStack {
             if showButton {
@@ -34,20 +35,22 @@ struct ContentView: View {
                 }
             } else {
                 Form {
-                    Section(header: Text(questions[questionIndex].question)) {
+                    Section (header: Text(questions[questionIndex].question)) {
                         TextField("Your Answer", text: $textEntered).textFieldStyle(.roundedBorder)
                     }
                     if textEntered != ""{
                         Button{
-                            
-                        }label: {
+                            if  questions[questionIndex].answer == textEntered{
+                                correctAns = true
+                            }
+                        } label: {
                             Text("Submit")
                         }
                     }
                 }
-                if  questions[questionIndex].answer == textEntered{
-                    Text("You Are CORRECT!!")
-                }
+            }
+            if (correctAns == true) {
+                Text("Correct answer!")
             }
         }
     }
@@ -58,3 +61,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
