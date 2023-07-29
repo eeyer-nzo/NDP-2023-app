@@ -51,9 +51,9 @@ struct ContentView: View {
             }
             if (correctAns == true) {
                 Text("Correct answer!")
-            }
         }
     }
+}
 }
 
 struct ContentView_Previews: PreviewProvider {
